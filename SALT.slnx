@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SALT.API/SALT.API.csproj" />
+  <Project Path="SALT.Domain/SALT.Domain.csproj" />
+  <Project Path="SALT.Repository/SALT.Repository.csproj" />
+  <Project Path="SALT.Service/SALT.Service.csproj" />
+</Solution>

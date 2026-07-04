@@ -1,0 +1,6 @@
+@SALT.API_HostAddress = http://localhost:5097
+
+GET {{SALT.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
