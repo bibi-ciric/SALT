@@ -1,4 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using SALT.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+// registering DataContext with MySQL
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
