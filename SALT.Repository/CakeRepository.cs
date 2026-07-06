@@ -41,4 +41,17 @@ public class CakeRepository : ICakeRepository
     {
         return (await _context.SaveChangesAsync()) > 0;
     }
+    public async Task<CakeCreated?> GetCakeCreatedWithIngredientsAsync(int id)
+    {
+        return await _context.CakeCreateds
+            .Include(c => c.BottomLayer)
+            .Include(c => c.Fill)
+            .Include(c => c.TopLayer)
+            .Include(c => c.Topping)
+            .FirstOrDefaultAsync(c => c.Id == id);
+    }
+    public async Task<Order?> GetOrderByIdAsync(int orderId)
+    {
+        return await _context.Orders.FindAsync(orderId);
+    }
 }

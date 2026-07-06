@@ -56,4 +56,30 @@ public class OrdersController : ControllerBase
             return StatusCode(500, new { message = "Unutrašnja greška servera.", detail = ex.Message });
         }
     }
+
+    [HttpPut("cancel/{orderId}")]
+    public async Task<IActionResult> CancelOrder(int orderId)
+    {
+        try
+        {
+            var success = await _orderService.CancelOrderAsync(orderId);
+            if (success)
+            {
+                return Ok(new { message = $"Porudžbina {orderId} je uspešno otkazana." });
+            }
+            return BadRequest(new { message = "Došlo je do greške pri otkazivanju porudžbine." });
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(new { message = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Greška na serveru.", detail = ex.Message });
+        }
+    }
 }

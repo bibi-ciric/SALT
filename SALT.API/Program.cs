@@ -31,7 +31,7 @@ var app = builder.Build();
 //     app.MapScalarApiReference();
 // }
 
-// Aktivacija klasičnog Swagger-a za sve modove (sigurno za odbranu)
+// // Configure the HTTP request pipeline. - Swagger
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {

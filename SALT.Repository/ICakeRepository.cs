@@ -10,4 +10,6 @@ public interface ICakeRepository
     Task AddOrderAsync(Order order);
     Task AddOrderCakesAsync(List<OrderCake> orderCakes);
     Task<bool> SaveChangesAsync();
+    Task<CakeCreated?> GetCakeCreatedWithIngredientsAsync(int id);
+    Task<Order?> GetOrderByIdAsync(int orderId);
 }

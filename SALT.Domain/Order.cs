@@ -10,7 +10,6 @@ public class Order
     public DateTime DateSubmitted { get; set; } = DateTime.Now;
     public DateTime DateExpected { get; set; }
     public DateTime? DateShipped { get; set; }
-
-    // Veza prema spojnoj tablici - narudžba sadrži listu stavki (kolača)
+    public bool Canceled { get; set; } = false;
     public ICollection<OrderCake> OrderCakes { get; set; } = new List<OrderCake>();
 }
